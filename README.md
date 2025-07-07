@@ -1,84 +1,118 @@
-# Employee_api_with_drf
 # Employee Management System (Django REST + Frontend)
 
-This is a simple employee management web application built using **Django REST Framework** (DRF) for the backend and **HTML + Bootstrap + JavaScript** for the frontend. It supports user registration, login, city management, employee CRUD operations, and activation/deactivation of employees.
+This is a full-stack employee management application built with Django REST Framework (DRF) and a Bootstrap-powered frontend. It supports user authentication, city management, employee operations, and logging of critical actions.
 
-## Features
+---
 
-* 🔐 User Registration & Login with Token Authentication
-* 🌆 Add and list cities
-* 👥 Add, Update, Delete, and List Employees
-* ✅ Activate / ❌ Deactivate Employees
-* 🔄 Auto-clear input forms after submission
+##  Features
 
-## Technologies Used
+* User Registration, Login, and Logout (Token-based auth)
+* Add and View Cities
+* CRUD Operations on Employees
+* Activate or Deactivate Employees
+* Auto-clear form inputs on submission
+* Logging of key events to `logs/employee.log`
 
-### Backend
+---
 
-* Python 3.x
-* Django
+##  Tech Stack
+
+### Backend:
+
+* Python 3.12+
+* Django 5.2+
 * Django REST Framework
 * Token Authentication
 
-### Frontend
+### Frontend:
 
-* HTML5
+* HTML
 * Bootstrap 5
 * JavaScript (Fetch API)
 
-## Setup Instructions
+---
 
-### 1. Clone the Repository
+## Project Structure
 
-```bash
-git clone https://github.com/yourusername/employee-management.git
-cd employee-management
+```
+drf_employee_project/
+├── backend/                # App with models, views, serializers
+│   ├── models.py
+│   ├── serializers.py
+│   ├── views.py
+│   ├── urls.py
+│
+├── drf_employee_project/  # Main Django settings & URLs
+│   ├── settings.py
+│   ├── urls.py
+│
+├── frontend/
+│   └── index.html          # Bootstrap + JS based frontend
+│
+├── logs/
+│   └── employee.log        # Log file (auto-created)
+│
+├── manage.py
+└── requirements.txt
 ```
 
-### 2. Backend Setup
-
-```bash
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-pip install -r requirements.txt
-
-# Migrate database
-python manage.py migrate
-
-# Create superuser (optional)
-python manage.py createsuperuser
-
-# Run development server
-python manage.py runserver
-```
-
-### 3. Frontend Setup
-
-The frontend is available in the `templates/frontend.html` file. You can view it by navigating to the API base URL or open it directly in your browser.
+---
 
 ## API Endpoints
 
-| Endpoint                          | Method         | Description                         |
-| --------------------------------- | -------------- | ----------------------------------- |
-| `/api/register/`                  | POST           | Register a new user                 |
-| `/api/login/`                     | POST           | Login and get auth token            |
-| `/api/logout/`                    | POST           | Logout and revoke token             |
-| `/api/cities/`                    | GET/POST       | List or create cities               |
-| `/api/employees/`                 | GET/POST       | List or create employees            |
-| `/api/employees/<id>/`            | GET/PUT/DELETE | Retrieve, update or delete employee |
-| `/api/employees/<id>/deactivate/` | PATCH          | Deactivate employee                 |
-| `/api/employees/<id>/activate/`   | PATCH          | Activate employee                   |
+| Endpoint                          | Method         | Description                |
+| --------------------------------- | -------------- | -------------------------- |
+| `/api/register/`                  | POST           | Register new user          |
+| `/api/login/`                     | POST           | Login and receive token    |
+| `/api/logout/`                    | POST           | Logout current user        |
+| `/api/cities/`                    | GET/POST       | List or create cities      |
+| `/api/employees/`                 | GET/POST       | List or create employees   |
+| `/api/employees/<id>/`            | GET/PUT/DELETE | Retrieve, update or delete |
+| `/api/employees/<id>/deactivate/` | PATCH          | Deactivate employee        |
+| `/api/employees/<id>/activate/`   | PATCH          | Activate employee          |
 
-## Screenshots
+---
 
-Add screenshots here if desired.
+##  Logging
+
+* All actions (like city/employee creation, activation, deletion) are logged in `logs/employee.log`
+* Log format includes timestamp, level, and action message
+
+---
+
+## Setup Instructions
+
+### Clone the repo
+
+```bash
+git clone https://github.com/yourusername/employee-api-project.git
+cd employee-api-project
+```
+
+### Backend Setup
+
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Or venv\Scripts\activate on Windows
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+```
+
+### Frontend
+
+* Open `frontend/index.html` in your browser
+
+---
 
 ## Author
 
-* **Aloknath Tiwari**
-  [GitHub](https://github.com/Alok3k7)
-  Email: [aloknathtiwari2000@gmail.com](mailto:aloknathtiwari2000@gmail.com)
+**Aloknath Tiwari**
+📧 [aloknathtiwari2000@gmail.com](mailto:aloknathtiwari2000@gmail.com)
+🔗 [GitHub](https://github.com/Alok3k7)
+
+---
 
 ## License
 
-This project is licensed under the MIT License.
+This project is open-source and available under the MIT License.
