@@ -1,0 +1,92 @@
+[2025-07-07 13:50:34,851] [INFO] [django.utils.autoreload] [RequestID: N/A] Watching for file changes with StatReloader
+[2025-07-07 13:50:43,291] [INFO] [django.server] [RequestID: N/A] "GET / HTTP/1.1" 200 17910
+[2025-07-07 13:50:43,559] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 101
+[2025-07-07 13:50:43,572] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/all/ HTTP/1.1" 200 258
+[2025-07-07 13:50:43,572] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/ HTTP/1.1" 200 258
+[2025-07-07 13:51:10,157] [INFO] [django.server] [RequestID: N/A] "POST /api/register/ HTTP/1.1" 201 52
+[2025-07-07 13:51:12,352] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 101
+[2025-07-07 13:52:05,120] [INFO] [django.server] [RequestID: N/A] "POST /api/cities/ HTTP/1.1" 201 26
+[2025-07-07 13:52:07,475] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 128
+[2025-07-07 13:52:11,372] [ERROR] [django.request] [RequestID: N/A] Internal Server Error: /api/employees/
+Traceback (most recent call last):
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2128, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/generics.py", line 246, in post
+    return self.create(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/mixins.py", line 19, in create
+    self.perform_create(serializer)
+  File "/home/alok/Desktop/Employee_with_api/employee_api/backend/views.py", line 79, in perform_create
+    city = City.objects.get(id=city_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 619, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1588, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1415, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 38, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 410, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 96, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got ''.
+[2025-07-07 13:52:11,394] [ERROR] [django.server] [RequestID: N/A] "POST /api/employees/ HTTP/1.1" 500 178299
+[2025-07-07 13:52:16,196] [INFO] [django.server] [RequestID: N/A] "POST /api/employees/ HTTP/1.1" 201 119
+[2025-07-07 13:52:18,399] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/ HTTP/1.1" 200 378
+[2025-07-07 13:52:18,415] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/all/ HTTP/1.1" 200 378
+[2025-07-07 13:55:47,128] [INFO] [django.server] [RequestID: N/A] "POST /api/cities/ HTTP/1.1" 201 26
+[2025-07-07 13:55:49,495] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 155

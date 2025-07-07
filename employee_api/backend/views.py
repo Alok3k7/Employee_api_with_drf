@@ -11,7 +11,16 @@ from .models import Employee, City
 from .serializers import EmployeeSerializer, CitySerializer
 from rest_framework import serializers
 from django.shortcuts import render
+import logging
 
+
+
+
+logger = logging.getLogger('backend')
+
+
+def some_view(request):
+    logger.info("Employee created successfully")
 
 
 @api_view(['POST'])

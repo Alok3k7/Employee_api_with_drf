@@ -337,6 +337,10 @@
       const salary = document.getElementById("emp-salary").value;
       const city = document.getElementById("emp-city").value;
 
+      if (!name || !email || !department || !salary || !city) {
+        alert("Please fill in all fields including city.");
+        return;
+      }
       const url = editingId ? `${BASE_URL}/employees/${editingId}/` : `${BASE_URL}/employees/`;
       const method = editingId ? "PUT" : "POST";
 
