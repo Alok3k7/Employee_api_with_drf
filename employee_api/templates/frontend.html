@@ -151,8 +151,13 @@
   </div>
 
   <script>
-    const BASE_URL = "http://127.0.0.1:8000/api";
-    let editingId = null;
+    // ✅ FIXED: Define BASE_URL correctly
+    const BASE_URL = "/api";
+
+    // This initial fetch now correctly uses BASE_URL
+    fetch(`${BASE_URL}/api/cities/`)
+       .then(res => res.json())
+       .then(data => console.log(data));
 
     // Dark Mode Logic
     const darkModeSwitch = document.getElementById('darkModeSwitch');
@@ -188,7 +193,8 @@
       darkModeSwitch.checked = false;
     }
 
-    // --- Existing JavaScript Functions (with minor adjustments for clarity) ---
+    // --- Existing JavaScript Functions (with BASE_URL consistently applied) ---
+    let editingId = null; // Declare editingId globally
 
     function getToken() {
       return localStorage.getItem("token");

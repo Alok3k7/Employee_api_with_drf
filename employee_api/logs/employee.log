@@ -90,3 +90,131 @@ ValueError: Field 'id' expected a number but got ''.
 [2025-07-07 13:52:18,415] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/all/ HTTP/1.1" 200 378
 [2025-07-07 13:55:47,128] [INFO] [django.server] [RequestID: N/A] "POST /api/cities/ HTTP/1.1" 201 26
 [2025-07-07 13:55:49,495] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 155
+[2025-07-07 16:58:19,546] [INFO] [django.utils.autoreload] [RequestID: N/A] Watching for file changes with StatReloader
+[2025-07-07 16:58:47,554] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/2/ HTTP/1.1" 200 120
+[2025-07-07 16:58:51,203] [ERROR] [django.request] [RequestID: N/A] Internal Server Error: /api/employees/2/
+Traceback (most recent call last):
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2128, in get_prep_value
+    return int(value)
+           ^^^^^^^^^^
+ValueError: invalid literal for int() with base 10: ''
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+               ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/views/decorators/csrf.py", line 65, in _view_wrapper
+    return view_func(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/views/generic/base.py", line 105, in view
+    return self.dispatch(request, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 515, in dispatch
+    response = self.handle_exception(exc)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 475, in handle_exception
+    self.raise_uncaught_exception(exc)
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 486, in raise_uncaught_exception
+    raise exc
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/views.py", line 512, in dispatch
+    response = handler(request, *args, **kwargs)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/rest_framework/decorators.py", line 50, in handler
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/employee_api/backend/views.py", line 110, in employee_detail
+    city = City.objects.get(id=city_id)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/manager.py", line 87, in manager_method
+    return getattr(self.get_queryset(), name)(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 619, in get
+    clone = self._chain() if self.query.combinator else self.filter(*args, **kwargs)
+                                                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1493, in filter
+    return self._filter_or_exclude(False, args, kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1511, in _filter_or_exclude
+    clone._filter_or_exclude_inplace(negate, args, kwargs)
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/query.py", line 1518, in _filter_or_exclude_inplace
+    self._query.add_q(Q(*args, **kwargs))
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1646, in add_q
+    clause, _ = self._add_q(q_object, can_reuse)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1678, in _add_q
+    child_clause, needed_inner = self.build_filter(
+                                 ^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1588, in build_filter
+    condition = self.build_lookup(lookups, col, value)
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/sql/query.py", line 1415, in build_lookup
+    lookup = lookup_class(lhs, rhs)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 38, in __init__
+    self.rhs = self.get_prep_lookup()
+               ^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 410, in get_prep_lookup
+    return super().get_prep_lookup()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/lookups.py", line 96, in get_prep_lookup
+    return self.lhs.output_field.get_prep_value(self.rhs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/alok/Desktop/Employee_with_api/myenv/lib/python3.12/site-packages/django/db/models/fields/__init__.py", line 2130, in get_prep_value
+    raise e.__class__(
+ValueError: Field 'id' expected a number but got ''.
+[2025-07-07 16:58:51,221] [ERROR] [django.server] [RequestID: N/A] "PUT /api/employees/2/ HTTP/1.1" 500 173787
+[2025-07-07 16:58:54,632] [INFO] [django.server] [RequestID: N/A] "DELETE /api/employees/2/ HTTP/1.1" 204 0
+[2025-07-07 16:58:56,143] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/ HTTP/1.1" 200 257
+[2025-07-07 16:58:56,150] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/all/ HTTP/1.1" 200 257
+[2025-07-07 16:59:04,210] [WARNING] [django.request] [RequestID: N/A] Not Found: /api/employees/2/
+[2025-07-07 16:59:04,223] [WARNING] [django.server] [RequestID: N/A] "PUT /api/employees/2/ HTTP/1.1" 404 30
+[2025-07-07 16:59:06,855] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/all/ HTTP/1.1" 200 257
+[2025-07-07 16:59:06,899] [INFO] [django.server] [RequestID: N/A] "GET /api/employees/ HTTP/1.1" 200 257
+[2025-07-09 10:41:21,312] [INFO] [django.utils.autoreload] [RequestID: N/A] Watching for file changes with StatReloader
+[2025-07-09 10:41:24,156] [INFO] [django.server] [RequestID: N/A] "GET / HTTP/1.1" 200 18058
+[2025-07-09 10:41:24,683] [WARNING] [django.request] [RequestID: N/A] Not Found: /favicon.ico
+[2025-07-09 10:41:24,684] [WARNING] [django.server] [RequestID: N/A] "GET /favicon.ico HTTP/1.1" 404 2504
+[2025-07-09 10:41:43,369] [INFO] [django.server] [RequestID: N/A] "POST /api/register/ HTTP/1.1" 201 52
+[2025-07-09 10:41:45,388] [WARNING] [django.request] [RequestID: N/A] Bad Request: /api/register/
+[2025-07-09 10:41:45,390] [WARNING] [django.server] [RequestID: N/A] "POST /api/register/ HTTP/1.1" 400 35
+[2025-07-09 10:41:45,552] [WARNING] [django.request] [RequestID: N/A] Bad Request: /api/register/
+[2025-07-09 10:41:45,553] [WARNING] [django.server] [RequestID: N/A] "POST /api/register/ HTTP/1.1" 400 35
+[2025-07-09 10:41:45,788] [INFO] [django.server] [RequestID: N/A] "GET /api/cities/ HTTP/1.1" 200 155
+[2025-07-09 10:41:45,793] [WARNING] [django.request] [RequestID: N/A] Bad Request: /api/register/
+[2025-07-09 10:41:45,795] [WARNING] [django.server] [RequestID: N/A] "POST /api/register/ HTTP/1.1" 400 35
+[2025-07-09 10:42:22,587] [INFO] [django.server] [RequestID: N/A] "GET /admin HTTP/1.1" 301 0
+[2025-07-09 10:42:22,639] [INFO] [django.server] [RequestID: N/A] "GET /admin/ HTTP/1.1" 302 0
+[2025-07-09 10:42:22,723] [INFO] [django.server] [RequestID: N/A] "GET /admin/login/?next=/admin/ HTTP/1.1" 200 4173
+[2025-07-09 10:42:22,945] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/login.css HTTP/1.1" 200 951
+[2025-07-09 10:42:22,947] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/dark_mode.css HTTP/1.1" 200 2808
+[2025-07-09 10:42:22,948] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/theme.js HTTP/1.1" 200 1653
+[2025-07-09 10:42:22,951] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/nav_sidebar.css HTTP/1.1" 200 2810
+[2025-07-09 10:42:22,956] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/responsive.css HTTP/1.1" 200 16565
+[2025-07-09 10:42:22,962] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/base.css HTTP/1.1" 200 22120
+[2025-07-09 10:42:22,985] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/nav_sidebar.js HTTP/1.1" 200 3063
+[2025-07-09 10:42:33,643] [INFO] [django.server] [RequestID: N/A] "POST /admin/login/?next=/admin/ HTTP/1.1" 200 4341
+[2025-07-09 10:42:43,778] [INFO] [django.server] [RequestID: N/A] "POST /admin/login/?next=/admin/ HTTP/1.1" 302 0
+[2025-07-09 10:42:43,844] [INFO] [django.server] [RequestID: N/A] "GET /admin/ HTTP/1.1" 200 9578
+[2025-07-09 10:42:43,958] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/dashboard.css HTTP/1.1" 200 441
+[2025-07-09 10:42:43,985] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/img/icon-addlink.svg HTTP/1.1" 200 331
+[2025-07-09 10:42:43,985] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/img/icon-changelink.svg HTTP/1.1" 200 380
+[2025-07-09 10:42:46,661] [INFO] [django.server] [RequestID: N/A] "GET /admin/backend/city/ HTTP/1.1" 200 12193
+[2025-07-09 10:42:46,772] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/css/changelists.css HTTP/1.1" 200 6878
+[2025-07-09 10:42:46,812] [INFO] [django.server] [RequestID: N/A] "GET /admin/jsi18n/ HTTP/1.1" 200 3342
+[2025-07-09 10:42:46,815] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/admin/RelatedObjectLookups.js HTTP/1.1" 200 9777
+[2025-07-09 10:42:46,815] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/jquery.init.js HTTP/1.1" 200 347
+[2025-07-09 10:42:46,816] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/actions.js HTTP/1.1" 200 8076
+[2025-07-09 10:42:46,818] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/core.js HTTP/1.1" 200 6208
+[2025-07-09 10:42:46,825] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/vendor/jquery/jquery.js HTTP/1.1" 200 285314
+[2025-07-09 10:42:46,843] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/urlify.js HTTP/1.1" 200 7887
+[2025-07-09 10:42:46,846] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/prepopulate.js HTTP/1.1" 200 1531
+[2025-07-09 10:42:46,853] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/vendor/xregexp/xregexp.js HTTP/1.1" 200 325171
+[2025-07-09 10:42:46,923] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/js/filters.js HTTP/1.1" 200 978
+[2025-07-09 10:42:46,999] [INFO] [django.server] [RequestID: N/A] "GET /static/admin/img/tooltag-add.svg HTTP/1.1" 200 331
+[2025-07-09 11:48:26,371] [INFO] [django.utils.autoreload] [RequestID: N/A] Watching for file changes with StatReloader
+[2025-07-09 11:48:55,986] [INFO] [django.utils.autoreload] [RequestID: N/A] Watching for file changes with StatReloader
